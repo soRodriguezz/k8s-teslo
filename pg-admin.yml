@@ -25,6 +25,13 @@ spec: # specification of the deployment
             secretKeyRef:
               name: pg-admin-secrets # name of the secret
               key: PG_USER_PASSWORD
+        - name:  PGADMIN_DEFAULT_EMAIL
+          valueFrom: # value from secret
+            secretKeyRef:
+              name: pg-admin-secrets # name of the secret
+              key: PG_USER_EMAIL
+        - name:  PGADMIN_ENHANCED_COOKIE_PROTECTION
+          value: "false"
 --- # separate the two objects with three dashes
 apiVersion: v1
 kind: Service # service object
